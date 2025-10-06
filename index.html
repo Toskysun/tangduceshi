@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNTI 姓名唐度指数 - 深度行为学分析</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 阶段一：姓名输入 -->
+        <div id="stage-name" class="stage active">
+            <header>
+                <h1>PNTI 深度行为学分析</h1>
+                <p class="subtitle">结合姓名音形义与行为模式的综合评估</p>
+            </header>
+            <main>
+                <div class="input-section">
+                    <input type="text" id="name-input" placeholder="请输入姓名，开始第一步分析">
+                    <button id="start-button">开始评估</button>
+                </div>
+            </main>
+        </div>
+
+        <!-- 阶段二：问卷调查 -->
+        <div id="stage-quiz" class="stage">
+            <h2>第二步：行为倾向问卷</h2>
+            <div class="quiz-item">
+                <p>1. 当你看到一个井盖时，你的第一反应是？</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="0"> A. 绕开走</label>
+                    <label><input type="radio" name="q1" value="5"> B. 检查是否盖好</label>
+                    <label><input type="radio" name="q1" value="20"> C. 想跳上去踩两脚</label>
+                    <label><input type="radio" name="q1" value="10"> D. 幻想下面是秘密基地</label>
+                </div>
+            </div>
+            <div class="quiz-item">
+                <p>2. 以下哪种笑声更符合你的风格？</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="0"> A. 呵呵</label>
+                    <label><input type="radio" name="q2" value="10"> B. 哈哈哈哈</label>
+                    <label><input type="radio" name="q2" value="20"> C. 嘿嘿嘿嘿</label>
+                    <label><input type="radio" name="q2" value="5"> D. 噗嗤</label>
+                </div>
+            </div>
+            <div class="quiz-item">
+                <p>3. 为你的大脑选择一个操作系统：</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="5"> A. Windows 稳定版</label>
+                    <label><input type="radio" name="q3" value="10"> B. macOS 优雅版</label>
+                    <label><input type="radio" name="q3" value="0"> C. Linux 内核版</label>
+                    <label><input type="radio" name="q3" value="20"> D. Android 魔改版</label>
+                </div>
+            </div>
+            <button id="analyze-button">生成最终报告</button>
+        </div>
+
+        <!-- 阶段三：结果报告 -->
+        <div id="stage-result" class="stage">
+            <h2>PNTI 综合分析报告</h2>
+            <div class="report-header">
+                <p><strong>分析对象:</strong> <span id="report-name"></span></p>
+                <p><strong>综合唐度指数:</strong> <span id="report-score"></span></p>
+            </div>
+            <div class="report-body">
+                <h3>核心“唐”点解读:</h3>
+                <p id="report-analysis"></p>
+            </div>
+            <div class="report-footer">
+                <p><strong>专家建议:</strong> <span id="report-suggestion"></span></p>
+            </div>
+            <button id="reset-button">重新评估</button>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 eli Advanced Analytics. All rights reserved. | 日期: 2025-10-06</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
