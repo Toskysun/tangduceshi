@@ -120,10 +120,6 @@ input[type="radio"] {
     margin-right: 10px;
 }
 
-input[type="radio"]:checked + label {
-    background-color: #e8f0fe;
-    border-color: #1a73e8;
-}
 /* A little trick to make the whole label clickable and show selection state */
 .options input[type="radio"] {
     display: none;
@@ -164,7 +160,7 @@ input[type="radio"]:checked + label {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
+    font-size: 2.5rem; /* <<< 看这里！我改了这里！ */
     font-weight: bold;
     color: #1a73e8;
     background: conic-gradient(#1a73e8 var(--score, 0deg), #e0e0e0 0deg);
