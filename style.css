@@ -1,17 +1,7 @@
-/* 引入Google字体 */
-:root {
-    --primary-color: #5e72e4;
-    --secondary-color: #8965e0;
-    --text-color: #525f7f;
-    --bg-color: #f8f9fe;
-    --card-bg: #ffffff;
-    --shadow: 0 7px 14px rgba(50, 50, 93, .1), 0 3px 6px rgba(0, 0, 0, .08);
-}
-
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: var(--text-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,113 +12,220 @@ body {
 }
 
 .container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 600px;
-    background-color: var(--card-bg);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    position: relative;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #1a73e8;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 30px;
 }
 
 .stage {
     display: none;
-    flex-direction: column;
-    animation: fadeIn 0.5s ease-in-out;
 }
 
 .stage.active {
-    display: flex;
+    display: block;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-header, h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #32325d;
-}
-
-h1 { font-size: 28px; margin: 0; }
-h2 { font-size: 24px; margin-top: 0; }
-.subtitle { font-size: 14px; color: #8898aa; margin-top: 5px; }
-
-.input-section { display: grid; gap: 10px; }
-
-#name-input {
-    flex-grow: 1;
-    padding: 15px;
-    border: 1px solid #dee2e6;
+input[type="text"] {
+    width: 80%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    font-size: 16px;
-    transition: all 0.3s;
+    font-size: 1rem;
+    transition: border-color 0.2s;
 }
 
-#name-input:focus {
+input[type="text"]:focus {
+    border-color: #1a73e8;
     outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(94, 114, 228, 0.2);
 }
 
 button {
-    padding: 15px 25px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: #fff;
+    background: #1a73e8;
+    color: white;
     border: none;
+    padding: 12px 25px;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+    transition: background-color 0.2s, transform 0.1s;
+    width: 80%;
+    max-width: 300px;
 }
 
 button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 7px 14px rgba(50, 50, 93, .1), 0 3px 6px rgba(0, 0, 0, .08);
+    background: #155ab3;
 }
 
-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: translateY(0);
+button:active {
+    transform: scale(0.98);
 }
 
-/* 问卷样式 */
-.quiz-item { margin-bottom: 20px; }
-.quiz-item p { margin: 0 0 10px 0; font-weight: 600; }
-.options { display: flex; flex-direction: column; gap: 8px; }
+#stage-quiz h2, #stage-result h2 {
+    margin-bottom: 20px;
+}
+
+.quiz-progress {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.quiz-item {
+    text-align: left;
+    margin-bottom: 25px;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.quiz-item p {
+    font-weight: 600;
+    margin-top: 0;
+}
+
 .options label {
-    padding: 12px;
-    border: 1px solid #e9ecef;
-    border-radius: 6px;
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background-color 0.2s, border-color 0.2s;
 }
+
 .options label:hover {
-    background-color: #f8f9fe;
-    border-color: var(--primary-color);
+    background-color: #f5f5f5;
 }
-.options input[type="radio"] { margin-right: 10px; }
 
-/* 报告样式 */
-#stage-result { background-color: #f8f9fe; margin: -40px; padding: 40px; }
-.report-header {
-    display: flex; justify-content: space-between; font-size: 16px; 
-    margin-bottom: 20px; background: #fff; padding: 15px; border-radius: 8px;
+input[type="radio"] {
+    margin-right: 10px;
 }
-.report-body h3, .report-footer h3 {
-    color: #32325d; border-bottom: 2px solid var(--primary-color); padding-bottom: 5px;
-}
-#report-analysis, #report-suggestion { line-height: 1.7; color: #525f7f; }
 
-footer {
+input[type="radio"]:checked + label {
+    background-color: #e8f0fe;
+    border-color: #1a73e8;
+}
+/* A little trick to make the whole label clickable and show selection state */
+.options input[type="radio"] {
+    display: none;
+}
+.options input[type="radio"]:checked + label {
+    background-color: #e8f0fe;
+    border-color: #1a73e8;
+}
+
+.result-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+#result-name {
+    font-weight: bold;
+    color: #1a73e8;
+}
+
+.result-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.score-display {
+    flex: 1;
+    min-width: 150px;
+}
+
+.score-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #1a73e8;
+    background: conic-gradient(#1a73e8 var(--score, 0deg), #e0e0e0 0deg);
+    transition: background 1s ease-out;
+}
+
+.score-display p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.report-text {
+    flex: 2;
+    min-width: 250px;
+    text-align: left;
+}
+
+.report-text h3 {
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.report-text p {
+    color: #666;
+    line-height: 1.6;
+}
+
+#reset-button {
+    margin-top: 20px;
+    background: #6c757d;
+}
+
+#reset-button:hover {
+    background: #5a6268;
+}
+
+/* 分享功能样式 */
+.share-section {
+    margin: 25px 0;
     text-align: center;
-    margin-top: 30px;
-    font-size: 12px;
-    color: #8898aa;
 }
+
+#share-button {
+    background: #28a745;
+    width: 100%;
+}
+#share-button:hover {
+    background: #218838;
+}
+
+.fallback-share-links {
+    display: none;
+    margin-top: 15px;
+    font-size: 14px;
+}
+.fallback-share-links.active {
+    display: block;
+}
+.fallback-share-links input {
+    width: 90%;
+    margin-top: 10px;
+}
+
