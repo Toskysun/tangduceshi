@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const shareTitle = `我的PNTI唐度指数分析报告`;
         const shareText = `我刚刚完成了PNTI深度行为学分析，我的综合唐度指数是 ${finalScore}/100！你也来测测你的“唐”点在哪里？`;
         // ！！！极其重要：请将下面的 URL 换成你部署后的 Cloudflare 网址！
-        const shareUrl = 'https://YOUR-PROJECT-NAME.pages.dev'; 
+        const shareUrl = 'https://t.elicdr.xx.kg'; 
 
         if (navigator.share) {
             // 使用 Web Share API
