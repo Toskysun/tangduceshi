@@ -110,21 +110,28 @@ button:active {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.2s, border-color 0.2s;
+    position: relative;
 }
 
+/* hover 样式 */
 .options label:hover {
     background-color: #f5f5f5;
 }
 
-input[type="radio"] {
-    margin-right: 10px;
+/* 隐藏原生 radio（保留于布局，但不显示） */
+.options input[type="radio"] {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    opacity: 0; /* 隐藏但保留可访问性 */
+    pointer-events: none;
 }
 
-/* A little trick to make the whole label clickable and show selection state */
-.options input[type="radio"] {
-    display: none;
-}
-.options input[type="radio"]:checked + label {
+/* 选中时的 label 样式：使用 JS 切换 .selected 类 */
+.options label.selected {
     background-color: #e8f0fe;
     border-color: #1a73e8;
 }
@@ -152,6 +159,7 @@ input[type="radio"] {
     min-width: 150px;
 }
 
+/* 使用 ::before 绘制背景色块（进度扇形），再用 ::after 做一个白色内圆，让数值在上层可读 */
 .score-circle {
     width: 120px;
     height: 120px;
@@ -162,9 +170,40 @@ input[type="radio"] {
     align-items: center;
     font-size: 2.5rem; /* <<< 看这里！我改了这里！ */
     font-weight: bold;
-    color: #1a73e8;
+    color: #1a73e8; /* 数值显示为蓝色 */
+    position: relative;
+    background: none; /* 背景由伪元素负责绘制 */
+}
+
+/* 底层扇形背景（受 --score 控制） */
+.score-circle::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
     background: conic-gradient(#1a73e8 var(--score, 0deg), #e0e0e0 0deg);
     transition: background 1s ease-out;
+    z-index: 0;
+}
+
+/* 内层白色圆（遮盖扇形中间，形成环形并保证数字可读） */
+.score-circle::after {
+    content: "";
+    position: absolute;
+    left: 12%;
+    top: 12%;
+    right: 12%;
+    bottom: 12%;
+    border-radius: 50%;
+    background: #ffffff;
+    z-index: 1;
+}
+
+/* 分值文本置于最上层 */
+.score-circle > span {
+    position: relative;
+    z-index: 2;
+    color: #1a73e8;
 }
 
 .score-display p {
