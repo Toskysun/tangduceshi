@@ -3,31 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PNTI 姓名唐度指数 - 深度行为学分析</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>PNTI - 唐氏倾向指数分析仪</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧐</text></svg>">
 </head>
 <body>
     <div class="container">
+        <header>
+            <h1>PNTI - 唐氏倾向指数分析仪</h1>
+            <p class="subtitle">Personalized Naivety & Trust Index</p>
+        </header>
+
         <!-- 阶段一：姓名输入 -->
         <div id="stage-name" class="stage active">
-            <header>
-                <h1>PNTI 深度行为学分析</h1>
-                <p class="subtitle">结合姓名音形义与行为模式的综合评估</p>
-            </header>
-            <main>
-                <div class="input-section">
-                    <input type="text" id="name-input" placeholder="请输入姓名，开始第一步分析">
-                    <button id="start-button">开始评估</button>
-                </div>
-            </main>
+            <h2>第一步：输入你的名字</h2>
+            <input type="text" id="name-input" placeholder="例如：孙笑川">
+            <button id="submit-name">开始分析</button>
         </div>
 
         <!-- 阶段二：问卷调查 -->
         <div id="stage-quiz" class="stage">
-            <h2>第二步：行为倾向问卷</h2>
+            <h2>第二步：深度行为倾向问卷</h2>
+            <p class="quiz-progress">进度: <span id="progress-text">0 / 10</span></p>
+
             <div class="quiz-item">
                 <p>1. 当你看到一个井盖时，你的第一反应是？</p>
                 <div class="options">
@@ -38,12 +36,12 @@
                 </div>
             </div>
             <div class="quiz-item">
-                <p>2. 以下哪种笑声更符合你的风格？</p>
+                <p>2. 一瓶瓶装水，你会怎么喝完最后一口？</p>
                 <div class="options">
-                    <label><input type="radio" name="q2" value="0"> A. 呵呵</label>
-                    <label><input type="radio" name="q2" value="10"> B. 哈哈哈哈</label>
-                    <label><input type="radio" name="q2" value="20"> C. 嘿嘿嘿嘿</label>
-                    <label><input type="radio" name="q2" value="5"> D. 噗嗤</label>
+                    <label><input type="radio" name="q2" value="0"> A. 喝不完，总会剩一点</label>
+                    <label><input type="radio" name="q2" value="10"> B. 正常喝完</label>
+                    <label><input type="radio" name="q2" value="5"> C. 仰头，直到水滴不再落下</label>
+                    <label><input type="radio" name="q2" value="20"> D. 拧上盖子猛摇，再喝</label>
                 </div>
             </div>
             <div class="quiz-item">
@@ -55,29 +53,99 @@
                     <label><input type="radio" name="q3" value="20"> D. Android 魔改版</label>
                 </div>
             </div>
+            <div class="quiz-item">
+                <p>4. 走路时，你更倾向于？</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="0"> A. 直线，目不斜视</label>
+                    <label><input type="radio" name="q4" value="20"> B. 内八或外八</label>
+                    <label><input type="radio" name="q4" value="10"> C. 跟着地砖线走</label>
+                    <label><input type="radio" name="q4" value="5"> D. 边走边看手机</label>
+                </div>
+            </div>
+            <div class="quiz-item">
+                <p>5. 如果你可以拥有一种无用的超能力，你会选？</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="10"> A. 能和盆栽聊天</label>
+                    <label><input type="radio" name="q5" value="5"> B. 完美地削苹果皮</label>
+                    <label><input type="radio" name="q5" value="20"> C. 让任何插座瞬间没电</label>
+                    <label><input type="radio" name="q5" value="0"> D. 我拒绝无用的超能力</label>
+                </div>
+            </div>
+            <div class="quiz-item">
+                <p>6. 手机电量低于多少时，你会开始恐慌？</p>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="5"> A. 50%</label>
+                    <label><input type="radio" name="q6" value="10"> B. 20%</label>
+                    <label><input type="radio" name="q6" value="0"> C. 5%</label>
+                    <label><input type="radio" name="q6" value="20"> D. 低于80%我就难受</label>
+                </div>
+            </div>
+            <div class="quiz-item">
+                <p>7. 在排队时，你会做什么来打发时间？</p>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="5"> A. 刷手机或听音乐</label>
+                    <label><input type="radio" name="q7" value="0"> B. 静静思考人生</label>
+                    <label><input type="radio" name="q7" value="10"> C. 观察前面的人在干嘛</label>
+                    <label><input type="radio" name="q7" value="20"> D. 轻微地前后摇晃</label>
+                </div>
+            </div>
+            <div class="quiz-item">
+                <p>8. 收到期待已久的快递，你的第一步是？</p>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="5"> A. 找剪刀优雅地开箱</label>
+                    <label><input type="radio" name="q8" value="20"> B. 暴力手撕，不留活口</label>
+                    <label><input type="radio" name="q8" value="10"> C. 先摇一摇，听听声音</label>
+                    <label><input type="radio" name="q8" value="0"> D. 放置一段时间再拆</label>
+                </div>
+            </div>
+            <div class="quiz-item">
+                <p>9. 给你半个西瓜和一把勺子，你会？</p>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="10"> A. 从中间开始挖</label>
+                    <label><input type="radio" name="q9" value="5"> B. 从边缘开始吃</label>
+                    <label><input type="radio" name="q9" value="0"> C. 切成小块再吃</label>
+                    <label><input type="radio" name="q9" value="20"> D. 挖个洞，插上吸管</label>
+                </div>
+            </div>
+            <div class="quiz-item">
+                <p>10. 拿到一个新设备，你会看说明书吗？</p>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="0"> A. 会，一字不差地阅读</label>
+                    <label><input type="radio" name="q10" value="10"> B. 只看快速入门指南</label>
+                    <label><input type="radio" name="q10" value="5"> C. 遇到问题再查</label>
+                    <label><input type="radio" name="q10" value="20"> D. 说明书？那是什么？</label>
+                </div>
+            </div>
+
             <button id="analyze-button">生成最终报告</button>
         </div>
 
-        <!-- 阶段三：结果报告 -->
+        <!-- 阶段三：结果展示 -->
         <div id="stage-result" class="stage">
-            <h2>PNTI 综合分析报告</h2>
-            <div class="report-header">
-                <p><strong>分析对象:</strong> <span id="report-name"></span></p>
-                <p><strong>综合唐度指数:</strong> <span id="report-score"></span></p>
+            <div class="result-header">
+                <h2>你的PNTI分析报告</h2>
+                <p>分析对象: <span id="result-name"></span></p>
             </div>
-            <div class="report-body">
-                <h3>核心“唐”点解读:</h3>
-                <p id="report-analysis"></p>
+            <div class="result-body">
+                <div class="score-display">
+                    <p>综合唐度指数</p>
+                    <div class="score-circle">
+                        <span id="final-score">0</span>
+                    </div>
+                </div>
+                <div class="report-text">
+                    <h3>分析摘要：</h3>
+                    <p id="report-summary"></p>
+                    <h3>行为建议：</h3>
+                    <p id="report-suggestion"></p>
+                </div>
             </div>
-            <div class="report-footer">
-                <p><strong>专家建议:</strong> <span id="report-suggestion"></span></p>
+            <div class="share-section">
+                <button id="share-button">分享我的“唐”度报告</button>
+                <div id="fallback-share" class="fallback-share-links"></div>
             </div>
             <button id="reset-button">重新评估</button>
         </div>
-
-        <footer>
-            <p>&copy; 2025 eli Advanced Analytics. All rights reserved. | 日期: 2025-10-06</p>
-        </footer>
     </div>
     <script src="script.js"></script>
 </body>
